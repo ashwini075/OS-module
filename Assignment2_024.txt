@@ -1,0 +1,130 @@
+Assignment-2
+
+1. Write a script to create 10 directories, say a1,a2,...,a10
+Report error if a directory/file exists with the same name.
+--->
+#!/bin/bash
+for i in {1..10}
+do
+        mkdir a$i
+done
+exit 0
+...........
+output:
+uni-ash@DESKTOP-TCF8H4O:~$ ./a2_1.sh
+mkdir: cannot create directory ‘a1’: File exists
+mkdir: cannot create directory ‘a2’: File exists
+uni-ash@DESKTOP-TCF8H4O:~$ ls
+-     a2       a7       as.txt      dsss      fork1.sh   movies     s3
+1.sh  a2_1.sh  a8       c           file1     fork.sh    p1         s4
+2.sh  a3       a9       cal.sh      file1.sh  head.txt   root_dir   s5
+a     a4       ash      cdac        file2.sh  hello all  root-dir1  shell
+a1    a5       ashwini  copied_dir  file3.sh  hello.sh   s1         shell-ps.sh
+a10   a6       Ashwini  digit.txt   file4.sh  if         s2
+-------------------------------------------------------------------------
+2. Write a menu based script to perform following string operations
+a) To find length of a string
+c) Copying string
+d) Concatenation of strings
+e) Compare two strings
+f) Reversing a string
+-->
+#!/bin/bash
+echo "give string"
+read string
+#finding length of string
+len=echo "length=${#string}"
+
+#copying string
+abc = $string
+echo "newstring=$string"
+
+#concat strings
+str1="sai"
+str2="baba"
+echo conatstring= $str1$str2
+
+#reversing a string
+echo "$string" | rev
+
+#comparing string
+read -p "enter str1:" str1
+read -p "enter str2:" str2
+
+if [[ "$str1" == "$str2" ]]; then
+        echo "both are equal"
+else
+        echo "both are unequal"
+fi
+
+....
+output:
+uni-ash@DESKTOP-TCF8H4O:~$ ./a2_2.sh
+give string
+ashwini
+./a2_2.sh: line 5: length=7: command not found
+./a2_2.sh: line 8: abc: command not found
+newstring=ashwini
+conatstring= saibaba
+iniwhsa
+enter str1:compare
+enter str2:comparee
+both are unequal
+-------------------------------------------------------------------------
+3.Write a shell script to rename all files in the current directory with numeric continuous value(Warning: Do this in a personal folder. Don't use Home directory) 
+-->
+
+4. Write a script that print environment variable(Print $HOME,$PATH,$SHELL,$HISTORY,$LOGNAME,$TERM)
+
+5. Write a shell script to print all files permissions in current directory(Not name or other details)(Use cut commands)
+
+6. Write a shell script to print all files permissions and name of file
+
+7.Write a shell script to print all files name and size greater than 5K
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Write a script To check given year is leap or not.
+2. Write a script to print day of the week using
+	a) elif	b) case 
+3. a) Write a script to find biggest of three no.s
+   b) To find avg of 3 no.s, read no.s from keyboard
+4. Write a program to check wahether given no.is even or odd
+5. Write a program to print calendar of current month in next year,previous years.
+	For eg:-sep 2014,sep 2012 if current month is sep 2013	
+6. Write a program to find sum and product of two no.s using 
+	a) let 
+	b)expr
+	c)bc	
+7. Write a script to generate Fibonacci series.
+8. Write a shell script to reverse the single strings. 
+9.Write a shell script to reverse the list of strings and reverse each string further in the list.
+10. Write a shell script to print the reverse of an input number.
+
+
+
+
+
+
+
+
+
+
+1.Write a shell script to validate password strength. Here are a few assumptions for the password string.
+Length  – minimum of 8 characters.
+Contain both alphabet and number.
+Include both the small and capital case letters.
+If the password doesn’t comply with any of the above conditions, then the script should report it as a <Weak Password>.
+
