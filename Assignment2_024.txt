@@ -287,18 +287,133 @@ Number is Odd
 ----------------------------------------------------------------------------------------
 5. Write a program to print calendar of current month in next year,previous years.
 	For eg:-sep 2014,sep 2012 if current month is sep 2013	
+-->
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ cal sep 2014 | cal sep 2012 |cal sep 2013
+   September 2013
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ cal sep 2014
+   September 2014
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30
+
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ cal sep 2012
+   September 2012
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30
+--------------------------------------------------------------------------------------------
 6. Write a program to find sum and product of two no.s using 
 	a) let 
 	b)expr
-	c)bc	
+	c)bc
+-->
+a)let
+let a=4
+let b=2
+product=$(($a*$b))
+echo $product
+
+output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./calculator.sh
+8
+
+b)expr
+
+read x
+read y
+echo `expr $x \* $y`
+
+output:-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./calculator.sh
+Enter x
+4
+Enter y
+3
+product:
+12
+
+c)bc
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ echo "5*4" | bc
+20
+
+-----------------------------------------------------------------------------
 7. Write a script to generate Fibonacci series.
+-->
+n=10
+a=0
+b=1
+echo "The fibonaccci series is: "
+for (( i=0; $i<n; i++))
+do
+echo -n "$a "
+fn=$((a+b))
+a=$b
+b=$fn
+done
+
+#output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./fibonacci.sh
+The fibonaccci series is:
+0 1 1 2 3 5 8 13 21 34
+----------------------------------------------------------------------------
 8. Write a shell script to reverse the single strings. 
+-->
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ echo "sainath" |rev
+htanias
+----------------------------------------------------------------------------
 9.Write a shell script to reverse the list of strings and reverse each string further in the list.
+-->read input
+reverse=""
+
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do
+        reverse="$reverse${input:$i:1}"
+done
+
+echo "$reverse"
+
+#output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./reverse.sh
+Hello I am Working on it
+ti no gnikroW ma I olleH
+----------------------------------------------------------------------------
 10. Write a shell script to print the reverse of an input number.
+-->read input
+reverse=""
 
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do
+        reverse="$reverse${input:$i:1}"
+done
 
+echo "$reverse"
 
+#output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./reverse.sh
+3456782
+2876543
 
+Or
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ echo 2000 |rev
+0002
+
+=================================================================================================================
 
 
 
@@ -311,3 +426,30 @@ Contain both alphabet and number.
 Include both the small and capital case letters.
 If the password doesn’t comply with any of the above conditions, then the script should report it as a <Weak Password>.
 
+-->
+echo "Enter Password"
+read password
+len="${#password}"
+if [ $len -ge 8 ]; then
+ echo "$password" | grep -q [0-9]
+  if [ $? -eq 0 ]; then
+        echo "$password" | grep -q [A-Z]
+         if [ $? -eq 0 ]; then
+           echo "password" | grep -q [a-z]
+                if [ $? -eq 0 ]; then
+                   echo "Strong Password"
+                else
+                   echo "Weak password"
+                fi
+         fi
+  fi
+fi
+
+#output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./validatePass.sh
+Enter Password
+Ashwini472w
+Strong Password
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$
+==================================================================================================================
+------------------------------------------------------------------------------------------------------------------
