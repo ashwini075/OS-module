@@ -72,9 +72,13 @@ int main()
 return 0;
 }
 
+output==
+$main
+another scheduling poly
 ------------------------------------------------------------------------------
 3.	Scheduling functions 
-Write a program in C/CPP to get the current scheduling policy of the process. The program should change the scheduling policy to the other than current one. Program should report errors if it fails to set the new scheduling policy. 
+Write a program in C/CPP to get the current scheduling policy of the process. The program should change the scheduling policy to the other than current one.
+ Program should report errors if it fails to set the new scheduling policy. 
 	(Hint(functions to be used) : sched_setscheduler, getpid) 
 -->
 #include<iostream>
