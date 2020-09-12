@@ -73,32 +73,140 @@ both are unequal
 -------------------------------------------------------------------------
 3.Write a shell script to rename all files in the current directory with numeric continuous value(Warning: Do this in a personal folder. Don't use Home directory) 
 -->
+for file in *.txt;
+do
+mv "$file" "${file/as.txt/_new.txt}";
+done
+............
+output-     
+uni-ash@DESKTOP-TCF8H4O:~$ ls
+-     a2_1.sh  a7       cdac        f3        fork1.sh   movies     s3           t.c
+1.sh  a2_2.sh  abc      copied_dir  file1     fork.c     _new.txt   s4
+................................................................................
 
 4. Write a script that print environment variable(Print $HOME,$PATH,$SHELL,$HISTORY,$LOGNAME,$TERM)
+-->
+echo 'Home-'$HOME
+echo 'Path-'$PATH
+echo 'Shell-'$SHELL
+echo 'History-'$HISTORY
+echo 'Logname-'$LOGNAME
+echo 'Term-'$TERM
+~                      
+..........
+output-
+uni-ash@DESKTOP-TCF8H4O:~$ ./a2_4.sh
+Home-/home/uni-ash
+Path-/home/uni-ash/bin:/home/uni-ash/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.Ubuntu16.04onWindows_2020.1604.14.0_x64__79rhkp1fndgsc:/mnt/c/Users/Admin/gcc/bin:/mnt/c/Users/Admin/gcc/libexec/gcc/i686-pc-mingw32/7.0.1:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/Admin/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/MySQL/MySQL Server 8.0/bin:/mnt/c/Users/Admin/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Admin/AppData/Roaming/npm:/snap/bin
+Shell-/bin/bash
+History-
+Logname-uni-ash
+Term-xterm-256color
+...........................................................................................
 
 5. Write a shell script to print all files permissions in current directory(Not name or other details)(Use cut commands)
+-->
+uni-ash@DESKTOP-TCF8H4O:~$ stat --format=%A t.c | cut -c 2-4
+rwx
 
+or
+ echo $`ls -l | cut -c 2-4`
+ --------------------------------------------------------------------------------------
 6. Write a shell script to print all files permissions and name of file
+-->echo $`ls -al`
+.....
+output-
+uni-ash@DESKTOP-TCF8H4O:~$ ./a2_6.sh
+$total 56 -rw-rw-rw- 1 uni-ash uni-ash 36 Apr 15 11:14 - drwxr-xr-x 1 uni-ash uni-ash 4096 Sep 11 22:14 . drwxr-xr-x 1 root root 4096 Apr 15 11:19 .. -rwxrwxrwx 1 uni-ash uni-ash 41 Apr 22 13:51 1.sh -rwxrwxrwx 1 uni-ash uni-ash 460 Apr 22 15:01 2.sh drwxrwxrwx 1 uni-ash uni-ash 4096 Sep 10 11:58 a drwxrwxrwx 1 uni-ash uni-ash 4096 Apr 15 10:15 a1 drwxrwxrwx 1 uni-ash uni-ash 4096 Sep 9 10:13 a10 drwxrwxrwx 1 uni-ash uni-ash 4096 Apr 15 10:15 a2 -rwxrwxrwx 1 uni-ash uni-ash 56 Sep 9 18:44 a2_1.sh -rwxrwxrwx 1 uni-ash uni-ash 430 Sep 9 17:40 a2_2.sh -rwxrwxrwx 1 uni-ash uni-ash 68 Sep 11 21:32 a2_3.sh -rw------- 1 uni-ash uni-ash 12288 Sep 9 18:57 .a2_3.sh.swp -rwxrwxrwx 
+........................................
 
 7.Write a shell script to print all files name and size greater than 5K
+-->
+find / -size 5k
+or
+find -type f -size +5k -ls
+................
+output-
+uni-ash@DESKTOP-TCF8H4O:~$ find -type f -size +5k -ls
+10414574138354376     12 -rw-------   1 uni-ash  uni-ash     12288 Sep  9 18:57 ./.a2_3.sh.swp 3096224743829688     12 -rw-------   1 uni-ash  uni-ash     11736 Sep 11 15:32 ./.bash_history
+18295873486216547     16 -rw-------   1 uni-ash  uni-ash      6725 Sep 11 22:14 ./.viminfo
+ 2251799814304667     12 -rw-------   1 uni-ash  uni-ash     12288 Sep  8 16:01 ./Ashwini/.a.txt.swp
+ 7881299348053796     12 -rw-------   1 uni-ash  uni-ash     12288 Sep  8 16:04 ./Ashwini/.b.txt.swp
+ 8444249301383651     12 -rw-------   1 uni-ash  uni-ash     12288 Sep  8 16:08 ./Ashwini/.c.txt.swp
+ 
 
 
 
-
-
-
-
-
-
-
-
-
-
+=================================================================================================================
 
 
 1. Write a script To check given year is leap or not.
+-->
+echo "Enter the number"
+read a
+y=` expr $a % 4 && $a % 400 `
+if [ "$y" -eq "0" ]
+then
+echo "It is a leap year"
+else 
+echo "It is not a leap year"
+fi
+
+
+
+
+#Output
+#Enter the number
+#2040
+#It is a leap year
+------------------------------------------------------------------
 2. Write a script to print day of the week using
-	a) elif	b) case 
+	a) elif	b) case
+-->
+*script using Elseif
+echo "Enter the choice between 1 to 7"
+read choice
+if [[ $choice -eq 1 ]]; then echo "Sunday"
+elif [[ $choice -eq 2 ]]; then echo "Monday"
+elif [[ $choice -eq 3 ]]; then echo "Tuesday"
+elif [[ $choice -eq 4 ]]; then echo "Wednesday"
+elif [[ $choice -eq 5 ]]; then echo "Thursday"
+elif [[ $choice -eq 6 ]]; then echo "Friday"
+elif [[ $choice -eq 7 ]]; then echo "Saturday"
+else
+echo "Invalid choice"
+fi
+
+output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./IfelseDay.sh
+Enter the choice between 1 to 7
+5
+Thursday
+
+* script using case
+echo "Enter the choice between 1 to 7"
+read choice
+case $choice in
+1)echo "Sunday";;
+2)echo "Monday";;
+3)echo "Tuesday";;
+4)echo "Wednesday";;
+5)echo "Thursday";;
+6)echo "Friday";;
+7)echo "Saturday";;
+*)echo "Invalid choice"
+esac
+
+#output-
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./caseDay.sh
+Enter the choice between 1 to 7
+9
+Invalid choice
+uni-ash@DESKTOP-TCF8H4O:~/assign2script$ ./caseDay.sh
+Enter the choice between 1 to 7
+5
+Thursday
+---------------------------------------------------------------------------
 3. a) Write a script to find biggest of three no.s
    b) To find avg of 3 no.s, read no.s from keyboard
 4. Write a program to check wahether given no.is even or odd
