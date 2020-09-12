@@ -383,14 +383,25 @@ a.txt
 --------------------------------------------------------------------
 19.	Change group of movies to sudo
 -->chgrp movies sudo
-
+--------------------------------------------------------------------
 20.	Change group of movies to avahi
--->
+-->chgrp movies avahi
+---------------------------------------------------------------------
 21.	Try changing permission after changing ownership to root
-22.	Try Changing permission after changing group to sudo without sudo
-23.	Try Changing owner and group both to root
-24.	Try changinging permission
-25.	Try deleting the file
+-->$sudo chmod 777 /root/opt
 
+--------------------------------------------------------------
+22.	Try Changing permission after changing group to sudo without sudo
+-->
+-------------------------------------------------------------
+23.	Try Changing owner and group both to root
+-->$ sudo chown user filelist
+--------------------------------------------------------
+24.	Try changinging permission
+-->chmod 777 Ashwini
+----------------------------------------------
+25.	Try deleting the file
+-->rm file1
+---------------------------------------------------------------
 	
 	
